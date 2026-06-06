@@ -42,11 +42,10 @@ async function getData(segment) {
 
     return await response.json();
   } catch (error) {
-    console.error(`Failed to fetch ${segment}`, error.message);
+    console.error(`Failed to get ${segment}. Reason:`, error.message);
     throw error;
   }
 }
-
 /*
  *
  * #2
@@ -97,6 +96,7 @@ async function postData(segment, data) {
     throw error;
   }
 }
+
 /*
  *
  * #3
@@ -248,4 +248,96 @@ async function deleteData(id) {
   }
 }
 
+// MY NODE TESTS, PLEASE IGNORE
+//
+// async function testGetAllPosts() {
+//   try {
+//     console.log("Запуск Тесту 1: Отримання масиву постів...");
+//     const posts = await getData("posts"); // <--- Внутрішній await
+//
+//     // Сценарій для Node.js аналізує дані за допомогою коду:
+//     if (Array.isArray(posts) && posts.length > 0) {
+//       console.log(
+//         `✅ Тест 1 пройдено! Успішно отримано масив із ${posts.length} постів.`,
+//       );
+//     } else {
+//       console.log("❌ Тест 1 провалено: отримані дані не є масивом.");
+//     }
+//   } catch (error) {
+//     console.log("❌ Тест 1 впав через помилку:", error.message);
+//   }
+// }
+// testGetAllPosts();
+//
+// async function testPostNewPost() {
+//   try {
+//     console.log("Запуск Тесту 2: Створення нового посту...");
+//
+//     const newPostData = {
+//       title: "New Post Title",
+//       body: "This is the body of the new post.",
+//       userId: 1,
+//     };
+//
+//     const result = await postData("posts", newPostData); // <--- Внутрішній await
+//
+//     if (result && result.id === 101 && result.title === newPostData.title) {
+//       console.log(
+//         `✅ Test 2 пройдено! Успішно створено новий пост з id ${result.id}.`,
+//       );
+//     } else {
+//       conole.log(
+//         "❌ Тест 2 провалено: отримані дані не відповідають очікуваним.",
+//       );
+//     }
+//   } catch (error) {
+//     console.error("❌ Тест 2 впав через помилку:", error.message);
+//   }
+// }
+// testPostNewPost();
+//
+// async function runUpdateTests() {
+//   try {
+//     console.log("Запуск Тесту 3: PUT");
+//     const putPayload = {
+//       title: "Updated Post Title",
+//       body: "This is the updated body of the post.",
+//       userId: 1,
+//     };
+//
+//     const putResult = await putData(1, putPayload); // <--- Внутрішній await
+//
+//     if (
+//       putResult &&
+//       putResult.id === 1 &&
+//       putResult.title === putPayload.title
+//     ) {
+//       console.log("✅ Тест 3 (PUT) пройдено! Успішно оновлено пост з id 1.");
+//     }
+//
+//     console.log("Запуск Тесту 4: PATCH");
+//
+//     const patchPayload = {
+//       title: "Partially Updated Post Title",
+//     };
+//
+//     const patchResult = await patchData(1, patchPayload); // <--- Внутрішній await
+//
+//     if (
+//       patchResult &&
+//       patchResult.id === 1 &&
+//       patchResult.title === patchPayload.title
+//     ) {
+//       console.log(
+//         "✅ Тест 4 (PATCH) пройдено! Успішно частково оновлено пост з id 1.",
+//       );
+//     }
+//   } catch (error) {
+//     console.error("❌ Тест оновлення впав через помилку:", error.message);
+//   }
+//
+//   console.log("One for all. PUT/PATCH. Done.");
+// }
+//
+// runUpdateTests();
 export { getData, postData, putData, patchData, deleteData };
