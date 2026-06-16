@@ -249,7 +249,6 @@ async function deleteData(id) {
 }
 
 // MY NODE TESTS, PLEASE IGNORE
-//
 // async function testGetAllPosts() {
 //   try {
 //     console.log("Запуск Тесту 1: Отримання масиву постів...");
@@ -280,6 +279,7 @@ async function deleteData(id) {
 //     };
 //
 //     const result = await postData("posts", newPostData); // <--- Внутрішній await
+//     console.log("Отримані дані після створення посту:", result);
 //
 //     if (result && result.id === 101 && result.title === newPostData.title) {
 //       console.log(
@@ -306,6 +306,7 @@ async function deleteData(id) {
 //     };
 //
 //     const putResult = await putData(1, putPayload); // <--- Внутрішній await
+//     console.log("Отримані дані після PUT запиту:", putResult);
 //
 //     if (
 //       putResult &&
@@ -322,6 +323,7 @@ async function deleteData(id) {
 //     };
 //
 //     const patchResult = await patchData(1, patchPayload); // <--- Внутрішній await
+//     console.log("Отримані дані після PATCH запиту:", patchResult);
 //
 //     if (
 //       patchResult &&
